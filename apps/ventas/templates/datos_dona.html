@@ -1,0 +1,46 @@
+<!doctype html>
+ <head>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>       
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.min.js"></script>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.min.css">
+   
+
+ {% load static from staticfiles %}
+
+  <script src="{% static 'lib/example.js' %}"></script>
+  <script src="{% static 'morris.js' %}"></script>
+
+  <link rel="stylesheet" href="{% static 'morris.css' %}">
+  <link rel="stylesheet" href="{% static 'lib/example.css' %}">
+</head>
+
+<body>
+<h1>Donut Chart</h1>
+<div id="graph"></div>
+<pre id="code" class="prettyprint linenums">
+Morris.Donut({
+  element: 'graph',
+  data: [
+    {value: 1, label:  'Congelados'},
+    {value: 2, label:  'Carnes'},
+    {value: 10, label: 'Liquidos'} 
+  ],
+  formatter: function (x) { return x + "%"}
+}).on('click', function(i, row){
+  console.log(i, row);
+});
+ 
+ 
+</pre>  
+  
+
+data: [<br> 
+{% for item in dato %}
+     value: {{item.total}}, label: '{{ item.categoria }}' <br>
+{% endfor %}
+  ],
+ 
+
+
+</body>

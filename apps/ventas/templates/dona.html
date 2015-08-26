@@ -1,0 +1,36 @@
+<!doctype html>
+<head>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>       
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.min.js"></script>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.min.css">
+   
+
+ {% load static from staticfiles %}
+
+  <script src="{% static 'lib/example.js' %}"></script>
+  <script src="{% static 'morris.js' %}"></script>
+
+  <link rel="stylesheet" href="{% static 'morris.css' %}">
+  <link rel="stylesheet" href="{% static 'lib/example.css' %}">
+</head>
+
+<body>
+<h1>Donut Chart</h1>
+<div id="graph"></div>
+<pre id="code" class="prettyprint linenums">
+Morris.Donut({
+  element: 'graph',
+  data: [
+    {value: 70, label: 'Primaria'},
+    {value: 15, label: 'Kinder'},
+    {value: 10, label: 'Primaria'},
+    {value: 5, label: 'Otros'}
+  ],
+  formatter: function (x) { return x + "%"}
+}).on('click', function(i, row){
+  console.log(i, row);
+});
+ 
+</pre>
+</body> 
